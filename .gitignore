@@ -1,0 +1,9 @@
+# Ignorar compilados de Maven y Java
+target/
+*.class
+
+# Ignorar configuraciones locales de NetBeans
+nbproject/
+nbactions.xml
+nb-configuration.xml
+.netbeans/
