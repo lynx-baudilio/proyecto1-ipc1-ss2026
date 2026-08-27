@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package usac.cunoc.ipc1.poketerminal;
 
-/**
- *
- * @author baudiliorr
- */
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) {   
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.mostrarMenu();   
     }
 }
