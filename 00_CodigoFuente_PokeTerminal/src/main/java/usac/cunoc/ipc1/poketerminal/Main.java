@@ -3,7 +3,7 @@ package usac.cunoc.ipc1.poketerminal;
 public class Main {
 
     public static void main(String[] args) {   
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.mostrarMenu();   
+        PoketerminalApp app = new PoketerminalApp();
+        app.iniciar();
     }
 }

@@ -1,6 +1,6 @@
 package usac.cunoc.ipc1.poketerminal.mapas.edificios;
 
-import usac.cunoc.ipc1.poketerminal.utilidades.EstiloEnConsola;
+import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
 public class TiendaPokemon extends Edificio{
 
@@ -11,14 +11,14 @@ public class TiendaPokemon extends Edificio{
     @Override
     protected String[][] construirPixelArt() {
         
-        String A = EstiloEnConsola.AZUL;
-        String B = EstiloEnConsola.BLANCO;
-        String G = EstiloEnConsola.GRIS;
-        String C = EstiloEnConsola.CYAN;
-        String M = EstiloEnConsola.MORADO;
-        String V = EstiloEnConsola.VERDE;
-        String RESET = EstiloEnConsola.RESET;
-        String N = EstiloEnConsola.GRIS + "·";
+        String A = Ansi.AZUL;
+        String B = Ansi.BLANCO;
+        String G = Ansi.GRIS;
+        String C = Ansi.CYAN;
+        String M = Ansi.MORADO;
+        String V = Ansi.VERDE;
+        String RESET = Ansi.RESET;
+        String N = Ansi.GRIS + "·";
 
         String[][] pixelArt = {
             // Fila 0: Techo azul superior inclinado (borde redondeado)

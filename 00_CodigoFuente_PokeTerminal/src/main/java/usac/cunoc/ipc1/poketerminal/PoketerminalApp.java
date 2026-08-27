@@ -1,33 +1,35 @@
 package usac.cunoc.ipc1.poketerminal;
 
-import com.sun.source.tree.BreakTree;
-import usac.cunoc.ipc1.poketerminal.utilidades.EstiloEnConsola;
 import java.util.Scanner;
-import javax.xml.stream.util.EventReaderDelegate;
+import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
-public class MenuPrincipal {
+public class PoketerminalApp {
     
     private Scanner scanner = new Scanner(System.in);
-    private EstiloEnConsola estilo = new EstiloEnConsola();
-    
+    private Ansi ansi = new Ansi();
+
     private int opcionSeleccionada = 1;
     private boolean programaActivo = true;
     
-    public void mostrarMenu() {
-        
+    public void iniciar() {
+        mostrarMenu();
+    }
+
+    private void mostrarMenu() {
+
         String entrada;
-        
-        do {            
-            estilo.limpiarPantalla();
+
+        do {
+            ansi.limpiarPantalla();
             System.out.println("====== Menú Principal ======");
-            System.out.println((opcionSeleccionada == 1 ? EstiloEnConsola.MORADO + "-> " : "   ") + "[1] Iniciar Nueva Partida" + EstiloEnConsola.RESET);
-            System.out.println((opcionSeleccionada == 2 ? EstiloEnConsola.MORADO + "-> " : "   ") + "[2] Cargar Partida" + EstiloEnConsola.RESET);
-            System.out.println((opcionSeleccionada == 3 ? EstiloEnConsola.MORADO + "-> " : "   ") + "[3] Salir" + EstiloEnConsola.RESET);
+            System.out.println((opcionSeleccionada == 1 ? Ansi.MORADO + "-> " : "   ") + "[1] Iniciar Nueva Partida" + Ansi.RESET);
+            System.out.println((opcionSeleccionada == 2 ? Ansi.MORADO + "-> " : "   ") + "[2] Cargar Partida" + Ansi.RESET);
+            System.out.println((opcionSeleccionada == 3 ? Ansi.MORADO + "-> " : "   ") + "[3] Salir" + Ansi.RESET);
             System.out.println("============================");
             System.out.print("Usar W + ENTER (arriba) ó S + ENTER (abajo) y X + ENTER para confirmar selección: ");
-            
+
             entrada = scanner.nextLine().toLowerCase().trim();
-            
+
             switch (entrada) {
                 case "w":
                     if (opcionSeleccionada > 1) {
@@ -46,10 +48,10 @@ public class MenuPrincipal {
                     System.out.println("Tecla no válida. Presiona ENTER para volver a intentar");
                     scanner.nextLine();
             }
-            
+
         } while (programaActivo);
     }
-    
+
     private void ejecutarOpcionSeleccionada() {
         switch (opcionSeleccionada) {
             case 1:
@@ -66,4 +68,5 @@ public class MenuPrincipal {
                 break;
         }
     }
+    
 }

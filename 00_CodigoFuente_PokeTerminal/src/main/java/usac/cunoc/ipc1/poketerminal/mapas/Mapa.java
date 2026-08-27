@@ -1,6 +1,6 @@
 package usac.cunoc.ipc1.poketerminal.mapas;
 
-import usac.cunoc.ipc1.poketerminal.utilidades.EstiloEnConsola;
+import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
 public abstract class Mapa {
     
@@ -45,7 +45,7 @@ public abstract class Mapa {
                 } else if (i == (filas - 1) && j == (columnas - 1)) {
                     cuadricula[filas - 1][columnas - 1] = "╝";
                 } else {
-                    cuadricula[i][j] = EstiloEnConsola.GRIS + "·" + EstiloEnConsola.RESET;
+                    cuadricula[i][j] = Ansi.GRIS + "·" + Ansi.RESET;
                 }
             }
         }

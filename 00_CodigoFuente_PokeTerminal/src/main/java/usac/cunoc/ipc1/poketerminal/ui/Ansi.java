@@ -1,6 +1,6 @@
-package usac.cunoc.ipc1.poketerminal.utilidades;
+package usac.cunoc.ipc1.poketerminal.ui;
 
-public class EstiloEnConsola {
+public class Ansi {
     
     public static final String RESET = "\u001B[0m";
     public static final String NEGRITA = "\u001B[1m";
