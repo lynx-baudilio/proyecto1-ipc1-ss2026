@@ -5,8 +5,8 @@ import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
 public class PoketerminalApp {
     
-    private Scanner scanner = new Scanner(System.in);
-    private Ansi ansi = new Ansi();
+    private final Scanner scanner = new Scanner(System.in);
+    private final Ansi ansi = new Ansi();
 
     private int opcionSeleccionada = 1;
     private boolean programaActivo = true;
