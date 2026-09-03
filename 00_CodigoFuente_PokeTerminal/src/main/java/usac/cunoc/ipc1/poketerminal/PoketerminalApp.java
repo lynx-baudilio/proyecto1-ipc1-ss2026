@@ -19,8 +19,11 @@ public class PoketerminalApp {
     }
     
     private void mostrarInicio() {
+        ansi.limpiarPantalla();
+        System.out.println(asciiArt.getBORDE_SUPERIOR());
         System.out.println(asciiArt.getTEXTO_TITULO());
         System.out.println(asciiArt.getPIKACHU_SORPENDIDO());
+        System.out.println(asciiArt.getBORDE_INFERIOR());
         scanner.nextLine();
     }
 
@@ -30,7 +33,7 @@ public class PoketerminalApp {
 
         do {
             ansi.limpiarPantalla();
-            System.out.println("====== Menú Principal ======");
+            System.out.println(asciiArt.getPOKE_START());
             System.out.println((opcionSeleccionada == 1 ? asciiArt.getNUEVA_PARTIDA(true) : asciiArt.getNUEVA_PARTIDA(false)));
             System.out.println((opcionSeleccionada == 2 ? asciiArt.getCARGAR_PARTIDA(true) : asciiArt.getCARGAR_PARTIDA(false)));
             System.out.println((opcionSeleccionada == 3 ? asciiArt.getSALIR(true) : asciiArt.getSALIR(false)));
