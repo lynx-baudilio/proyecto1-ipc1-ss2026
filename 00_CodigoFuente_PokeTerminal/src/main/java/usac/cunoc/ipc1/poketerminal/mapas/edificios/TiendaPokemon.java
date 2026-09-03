@@ -8,7 +8,7 @@ public class TiendaPokemon extends Edificio{
     
     @Override
     protected String[][] construirPixelArt() {
-        return dibujo.getTIENDA();
+        return edificio.getTIENDA();
     }
     
 }

@@ -1,6 +1,6 @@
 package usac.cunoc.ipc1.poketerminal.mapas.edificios;
 
-import usac.cunoc.ipc1.poketerminal.ui.PixelArtEdificio;
+import usac.cunoc.ipc1.poketerminal.ui.PixelArt;
 
 public abstract class Edificio {
     
@@ -10,7 +10,7 @@ public abstract class Edificio {
     protected int ancho;
     protected String[][] pixelArt;
     
-    protected PixelArtEdificio dibujo = new PixelArtEdificio();
+    protected PixelArt edificio = new PixelArt();
     
     public Edificio(int alto, int ancho) {
         this.alto = alto;

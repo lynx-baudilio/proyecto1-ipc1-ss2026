@@ -8,6 +8,6 @@ public class CentroPokemon extends Edificio {
     
     @Override
     protected String[][] construirPixelArt() {
-        return dibujo.getCENTRO();
+        return edificio.getCENTRO();
     }
 }

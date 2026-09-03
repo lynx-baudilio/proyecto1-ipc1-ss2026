@@ -8,7 +8,7 @@ public class GimnasioPokemon extends Edificio {
     
     @Override
     protected String[][] construirPixelArt() {
-        return dibujo.getGIMNASIO();
+        return edificio.getGIMNASIO();
     }
     
 }

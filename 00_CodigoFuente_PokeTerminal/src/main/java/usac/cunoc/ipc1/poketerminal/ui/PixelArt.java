@@ -1,6 +1,6 @@
 package usac.cunoc.ipc1.poketerminal.ui;
 
-public class PixelArtEdificio {
+public class PixelArt {
     
     private static final String RESET = Ansi.RESET;
     private static final String R = Ansi.ROJO;
