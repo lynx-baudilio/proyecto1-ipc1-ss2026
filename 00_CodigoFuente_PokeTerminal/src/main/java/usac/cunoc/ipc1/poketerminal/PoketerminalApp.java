@@ -4,14 +4,18 @@ import java.util.Scanner;
 import usac.cunoc.ipc1.poketerminal.mapas.MapaCiudad;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 import usac.cunoc.ipc1.poketerminal.ui.AsciiArt;
+import usac.cunoc.ipc1.poketerminal.ui.DialogoNPC;
 import usac.cunoc.ipc1.poketerminal.ui.PixelArt;
+import usac.cunoc.ipc1.poketerminal.utilidades.LeerEntrada;
 
 public class PoketerminalApp {
     
     private final Scanner scanner = new Scanner(System.in);
+    private final LeerEntrada leerEntrada = new LeerEntrada();
+    private final Ansi ansi = new Ansi();
     private final AsciiArt asciiArt = new AsciiArt();
     private final PixelArt pixelArt = new PixelArt();
-    private final Ansi ansi = new Ansi();
+    private final DialogoNPC mostrarDialogo = new DialogoNPC();
 
     private int opcionSeleccionada = 1;
     private boolean programaActivo = true;
@@ -40,12 +44,10 @@ public class PoketerminalApp {
             System.out.println((opcionSeleccionada == 1 ? asciiArt.getNUEVA_PARTIDA(true) : asciiArt.getNUEVA_PARTIDA(false)));
             System.out.println((opcionSeleccionada == 2 ? asciiArt.getCARGAR_PARTIDA(true) : asciiArt.getCARGAR_PARTIDA(false)));
             System.out.println((opcionSeleccionada == 3 ? asciiArt.getSALIR(true) : asciiArt.getSALIR(false)));
-            System.out.println("============================");
-            System.out.print("Usar W + ENTER (arriba) ó S + ENTER (abajo) y X + ENTER para confirmar selección: ");
+            
+            entrada = leerEntrada.texto("INSTRUCCIONES:\nSi quieres confirmar la opción seleccionada: X + ENTER\nSi quieres seleccionar la opción de arriba: W + ENTER\nSi quieres seleccionar la opción de abajo: S + ENTER");
 
-            entrada = scanner.nextLine().toLowerCase().trim();
-
-            switch (entrada) {
+            switch (entrada.toLowerCase()) {
                 case "w":
                     if (opcionSeleccionada > 1) {
                         opcionSeleccionada = opcionSeleccionada - 1;
@@ -86,28 +88,19 @@ public class PoketerminalApp {
     
     private void iniciarNuevaPartida() {        
         
-        mostrarDialogoProfesorOak("Hola :D. Te doy la bienvenida al mejor mundo Pokémon!");
-        scanner.nextLine();
-        mostrarDialogoProfesorOak("Yo soy el Profesor Oak. Estoy para ayudarte en este mundo que está habitado por criaturas llamadas pokémon.");
-        scanner.nextLine();
-        mostrarDialogoProfesorOak("Para algunos los pokemones son mascotas, y para otros son gallos de pelea.");
-        scanner.nextLine();
-        mostrarDialogoProfesorOak("Pero don't worry dijo aquel, porque yo estudio a los pokemones como profesión.");
-        scanner.nextLine();
-        mostrarDialogoProfesorOak("Pero pues si, empecemos por lo principal, ¿Cuál es tu nombre?");
-        scanner.nextLine();
+        mostrarDialogo.profesorOak("Hola :D. Te doy la bienvenida al mejor mundo Pokémon!");
+        leerEntrada.enter();
+        mostrarDialogo.profesorOak("Yo soy el Profesor Oak. Estoy para ayudarte en este mundo que está habitado por criaturas llamadas pokémon.");
+        leerEntrada.enter();
+        mostrarDialogo.profesorOak("Para algunos los pokemones son mascotas, y para otros son gallos de pelea.");
+        leerEntrada.enter();
+        mostrarDialogo.profesorOak("Pero don't worry dijo aquel, porque yo estudio a los pokemones como profesión.");
+        leerEntrada.enter();
+        mostrarDialogo.profesorOak("Pero pues si, empecemos por lo principal, ¿Cuál es tu nombre?");
+        leerEntrada.enter();
         
         MapaCiudad mapaCiudad = new MapaCiudad();
         mapaCiudad.imprimirMapa();
-    }
-    
-    private void mostrarDialogoProfesorOak(String mensaje) {
-        ansi.limpiarPantalla();
-        System.out.println(asciiArt.getBORDE_SUPERIOR());
-        System.out.println(pixelArt.getPROFESOR_OAK());
-        System.out.println(Ansi.NEGRITA + Ansi.AMARILLO + " PROFESOR OAK:" + Ansi.RESET);
-        System.out.println(Ansi.NEGRITA + Ansi.MORADO + " " + mensaje + Ansi.RESET);
-        System.out.println(asciiArt.getBORDE_INFERIOR());
     }
     
 }
