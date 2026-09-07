@@ -13,7 +13,7 @@ public class Ansi {
     public static final String BLANCO = "\u001B[37m";
     public static final String GRIS = "\u001B[90m";
     public static final String CANCHE = "\u001B[38;5;222m";
-    public static final String CAFE = "\u001B[38;5;130m";
+    public static final String CAFE = "\u001B[38;5;130m";   
 
     public void limpiarPantalla() {
         System.out.println("\033[H\033[2J");

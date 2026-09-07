@@ -1,13 +1,16 @@
 package usac.cunoc.ipc1.poketerminal;
 
 import java.util.Scanner;
+import usac.cunoc.ipc1.poketerminal.mapas.MapaCiudad;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 import usac.cunoc.ipc1.poketerminal.ui.AsciiArt;
+import usac.cunoc.ipc1.poketerminal.ui.PixelArt;
 
 public class PoketerminalApp {
     
     private final Scanner scanner = new Scanner(System.in);
     private final AsciiArt asciiArt = new AsciiArt();
+    private final PixelArt pixelArt = new PixelArt();
     private final Ansi ansi = new Ansi();
 
     private int opcionSeleccionada = 1;
@@ -22,7 +25,7 @@ public class PoketerminalApp {
         ansi.limpiarPantalla();
         System.out.println(asciiArt.getBORDE_SUPERIOR());
         System.out.println(asciiArt.getTEXTO_TITULO());
-        System.out.println(asciiArt.getPIKACHU_SORPENDIDO());
+        System.out.println(pixelArt.getPORTADA());
         System.out.println(asciiArt.getBORDE_INFERIOR());
         scanner.nextLine();
     }
@@ -57,7 +60,7 @@ public class PoketerminalApp {
                     ejecutarOpcionSeleccionada();
                     break;
                 default:
-                    System.out.println("Tecla no válida. Presiona ENTER para volver a intentar");
+                    System.out.println("Tecla inválida. Presiona ENTER para volver a intentar");
                     scanner.nextLine();
             }
 
@@ -67,7 +70,7 @@ public class PoketerminalApp {
     private void ejecutarOpcionSeleccionada() {
         switch (opcionSeleccionada) {
             case 1:
-                System.out.println("Iniciando nueva partida");
+                iniciarNuevaPartida();
                 scanner.nextLine();
                 break;
             case 2:
@@ -79,6 +82,32 @@ public class PoketerminalApp {
                 programaActivo = false;
                 break;
         }
+    }
+    
+    private void iniciarNuevaPartida() {        
+        
+        mostrarDialogoProfesorOak("Hola :D. Te doy la bienvenida al mejor mundo Pokémon!");
+        scanner.nextLine();
+        mostrarDialogoProfesorOak("Yo soy el Profesor Oak. Estoy para ayudarte en este mundo que está habitado por criaturas llamadas pokémon.");
+        scanner.nextLine();
+        mostrarDialogoProfesorOak("Para algunos los pokemones son mascotas, y para otros son gallos de pelea.");
+        scanner.nextLine();
+        mostrarDialogoProfesorOak("Pero don't worry dijo aquel, porque yo estudio a los pokemones como profesión.");
+        scanner.nextLine();
+        mostrarDialogoProfesorOak("Pero pues si, empecemos por lo principal, ¿Cuál es tu nombre?");
+        scanner.nextLine();
+        
+        MapaCiudad mapaCiudad = new MapaCiudad();
+        mapaCiudad.imprimirMapa();
+    }
+    
+    private void mostrarDialogoProfesorOak(String mensaje) {
+        ansi.limpiarPantalla();
+        System.out.println(asciiArt.getBORDE_SUPERIOR());
+        System.out.println(pixelArt.getPROFESOR_OAK());
+        System.out.println(Ansi.NEGRITA + Ansi.AMARILLO + " PROFESOR OAK:" + Ansi.RESET);
+        System.out.println(Ansi.NEGRITA + Ansi.MORADO + " " + mensaje + Ansi.RESET);
+        System.out.println(asciiArt.getBORDE_INFERIOR());
     }
     
 }
