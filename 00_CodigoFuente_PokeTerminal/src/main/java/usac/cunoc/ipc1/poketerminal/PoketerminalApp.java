@@ -45,7 +45,7 @@ public class PoketerminalApp {
             System.out.println((opcionSeleccionada == 2 ? asciiArt.getCARGAR_PARTIDA(true) : asciiArt.getCARGAR_PARTIDA(false)));
             System.out.println((opcionSeleccionada == 3 ? asciiArt.getSALIR(true) : asciiArt.getSALIR(false)));
             
-            entrada = leerEntrada.texto("INSTRUCCIONES:\nSi quieres confirmar la opción seleccionada: X + ENTER\nSi quieres seleccionar la opción de arriba: W + ENTER\nSi quieres seleccionar la opción de abajo: S + ENTER");
+            entrada = leerEntrada.texto("Si quieres confirmar la opción seleccionada: X + ENTER\nSi quieres seleccionar la opción de arriba: W + ENTER\nSi quieres seleccionar la opción de abajo: S + ENTER");
 
             switch (entrada.toLowerCase()) {
                 case "w":
@@ -86,7 +86,8 @@ public class PoketerminalApp {
         }
     }
     
-    private void iniciarNuevaPartida() {        
+    private void iniciarNuevaPartida() {
+        String nombrePartida = pedirNombreDePartida();
         
         mostrarDialogo.profesorOak("Hola :D. Te doy la bienvenida al mejor mundo Pokémon!");
         leerEntrada.enter();
@@ -96,11 +97,51 @@ public class PoketerminalApp {
         leerEntrada.enter();
         mostrarDialogo.profesorOak("Pero don't worry dijo aquel, porque yo estudio a los pokemones como profesión.");
         leerEntrada.enter();
+        
         mostrarDialogo.profesorOak("Pero pues si, empecemos por lo principal, ¿Cuál es tu nombre?");
+        String nombreJugador = leerEntrada.texto("Ingresa tu nombre de entrenador");
+        
+        mostrarDialogo.profesorOak("¡Que calidad conocerte " + nombreJugador + ":D!");
+        leerEntrada.enter();
+        mostrarDialogo.profesorOak("Ahora debes eligir tu pokemon inicial.");
+        leerEntrada.enter();
+
+        int opcionPokemon = Integer.valueOf(leerEntrada.texto("Elige tu pokémon inicial:\n[1] Bulbasaur\n[2] Squirtle\n[3] Charmander"));
+        
+        String pokemonElegido = "";
+        switch (opcionPokemon) {
+            case 1:
+                pokemonElegido = "bulbasaur";
+                break;
+            case 2:
+                pokemonElegido = "squirtle";
+                break;
+            case 3:
+                pokemonElegido = "charmander";
+                break;
+            default:
+                System.out.println("Coloca un número válido :c");
+        }
+        
+        mostrarDialogo.profesorOak("Ala y no de pollo :o. ¡Excelente decisión con " + pokemonElegido + "!");
         leerEntrada.enter();
         
+        String apodoPokemon = leerEntrada.texto("¿Qué apodo le quieres dar a tu " + pokemonElegido + "? (Presione ENTER si no quieres agregarle apodo");
+        
+        if (apodoPokemon.isEmpty()) {
+            apodoPokemon = pokemonElegido;
+        }
+        
+        mostrarDialogo.profesorOak("Nítido entonces :D. " + apodoPokemon + " se une a tu aventura");
+        leerEntrada.enter();
+        
+        ansi.limpiarPantalla();
         MapaCiudad mapaCiudad = new MapaCiudad();
         mapaCiudad.imprimirMapa();
     }
     
+    private String pedirNombreDePartida() {
+        asciiArt.getINGRESAR_NOMBRE_PARTIDA();
+        return leerEntrada.texto("Escriba un nombre para identificar tu partida :p");
+    }
 }
