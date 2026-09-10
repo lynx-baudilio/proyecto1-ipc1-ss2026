@@ -67,6 +67,12 @@ public class AsciiArt {
             + "░█░░░░░░░░█░░░░▀▀█░█▀█░█░░░░█░░█▀▄\n"
             + "░▀▀░░░░░░▀▀░░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░▀\n"
             + Ansi.RESET;
+    
+    private final String INGRESAR_NOMBRE_PARTIDA = Ansi.NEGRITA + Ansi.AZUL 
+            + "                     ╦╔╗╔╔═╗╦═╗╔═╗╔═╗╔═╗  ╔═╗╦    ╔╗╔╔═╗╔╦╗╔╗ ╦═╗╔═╗  ╔╦╗╔═╗  ╦  ╔═╗  ╔═╗╔═╗╦═╗╔╦╗╦╔╦╗╔═╗\n"
+            + "                     ║║║║║ ╦╠╦╝║╣ ╚═╗║╣   ║╣ ║    ║║║║ ║║║║╠╩╗╠╦╝║╣    ║║║╣   ║  ╠═╣  ╠═╝╠═╣╠╦╝ ║ ║ ║║╠═╣\n"
+            + "                     ╩╝╚╝╚═╝╩╚═╚═╝╚═╝╚═╝  ╚═╝╩═╝  ╝╚╝╚═╝╩ ╩╚═╝╩╚═╚═╝  ═╩╝╚═╝  ╩═╝╩ ╩  ╩  ╩ ╩╩╚═ ╩ ╩═╩╝╩ ╩" 
+            + Ansi.RESET;
 
     public String getBORDE_SUPERIOR() {
         return BORDE_SUPERIOR;
@@ -103,6 +109,10 @@ public class AsciiArt {
             return Ansi.ROJO + SALIR_SELECCIONADO + Ansi.RESET;
         }
         return Ansi.GRIS + SALIR + Ansi.RESET;
+    }
+
+    public String getINGRESAR_NOMBRE_PARTIDA() {
+        return INGRESAR_NOMBRE_PARTIDA;
     }
 }    
  
