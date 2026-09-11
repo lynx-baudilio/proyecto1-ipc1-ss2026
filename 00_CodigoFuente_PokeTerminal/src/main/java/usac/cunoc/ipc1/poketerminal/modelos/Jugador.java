@@ -34,7 +34,9 @@ public class Jugador implements Serializable {
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
-    
-    
+
+    public static int getPOKEMONES_MAX() {
+        return POKEMONES_MAX;
+    }
     
 }

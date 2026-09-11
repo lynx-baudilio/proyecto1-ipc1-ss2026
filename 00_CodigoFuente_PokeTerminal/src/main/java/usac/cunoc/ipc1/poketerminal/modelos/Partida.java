@@ -1,0 +1,36 @@
+package usac.cunoc.ipc1.poketerminal.modelos;
+
+import java.io.Serializable;
+import usac.cunoc.ipc1.poketerminal.mapas.MapaCiudad;
+
+public class Partida implements Serializable {
+    
+    private static final long SERIAL_VERSION_UID = 1L;
+    
+    private String nombrePartida;
+    private Jugador jugador;
+    private MapaCiudad[] ciudades = new MapaCiudad[3];
+    private int ciudadActual;
+    
+    public Partida(String nombrePartida, Jugador jugador) {
+        this.nombrePartida = nombrePartida;
+        this.jugador = jugador;
+        this.ciudadActual = 0;
+    }
+
+    public String getNombrePartida() {
+        return nombrePartida;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public int getCiudadActual() {
+        return ciudadActual;
+    }
+
+    public void setCiudades(MapaCiudad[] ciudades) {
+        this.ciudades = ciudades;
+    }
+}
