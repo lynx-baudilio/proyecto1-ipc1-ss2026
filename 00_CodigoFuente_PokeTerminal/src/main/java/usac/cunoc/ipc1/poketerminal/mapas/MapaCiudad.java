@@ -8,10 +8,13 @@ import usac.cunoc.ipc1.poketerminal.mapas.edificios.TiendaPokemon;
 
 public class MapaCiudad extends Mapa{
     
+    private String nombreCiudad;
+    
     private Random random = new Random();
     
-    public MapaCiudad() {
+    public MapaCiudad(String nombreCiudad) {
         super(26, 100);
+        this.nombreCiudad = nombreCiudad;
         colocarEdificiosAleatorios();
     }
 
@@ -55,4 +58,9 @@ public class MapaCiudad extends Mapa{
         
         return true;
     }
+
+    public String getNombreCiudad() {
+        return nombreCiudad;
+    }
+    
 }
