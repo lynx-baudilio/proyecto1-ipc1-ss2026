@@ -27,7 +27,4 @@ public class Posicion implements Serializable {
     public void setColumna(int columna) {
         this.columna = columna;
     }
-    
-    
-    
 }

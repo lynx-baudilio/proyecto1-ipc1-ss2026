@@ -16,6 +16,10 @@ public class Partida implements Serializable {
         this.nombrePartida = nombrePartida;
         this.jugador = jugador;
         this.ciudadActual = 0;
+        
+        this.ciudades[0] = new MapaCiudad("1");
+        this.ciudades[1] = new MapaCiudad("2");
+        this.ciudades[2] = new MapaCiudad("3");
     }
 
     public String getNombrePartida() {
@@ -26,8 +30,8 @@ public class Partida implements Serializable {
         return jugador;
     }
 
-    public int getCiudadActual() {
-        return ciudadActual;
+    public MapaCiudad getCiudadActual() {
+        return ciudades[ciudadActual];
     }
 
     public void setCiudades(MapaCiudad[] ciudades) {

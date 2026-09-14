@@ -6,21 +6,42 @@ public class Pokemon implements Serializable {
 
     private static final long SERIAL_VERSION_UID = 1L;
     
+    private int id;
     private String especie;
     private String apodo;
-    private int id;
     private int nivel;
+    private int exp;
     private int vidaActual;
     private int vidaMax;
-    //private MovimientoPokemon[] movimientos;
+    private int puntosAtaque;
+    private int puntosDefensa;
+    private int puntosVelocidad;
+    private Movimiento[] movimientos;
 
-    public Pokemon(String especie, String apodo, int id, int nivel, int vidaActual, int vidaMax) {
+    public Pokemon(int id, String especie, String apodo, int nivel, int exp, int vidaActual, int vidaMax, int puntosAtaque, int puntosDefensa, int puntosVelocidad, Movimiento[] movimientos) {
+        this.id = id;
         this.especie = especie;
         this.apodo = apodo;
-        this.id = id;
         this.nivel = nivel;
+        this.exp = exp;
         this.vidaActual = vidaActual;
         this.vidaMax = vidaMax;
+        this.puntosAtaque = puntosAtaque;
+        this.puntosDefensa = puntosDefensa;
+        this.puntosVelocidad = puntosVelocidad;
+        this.movimientos = movimientos;
+    }
+
+    public static long getSERIAL_VERSION_UID() {
+        return SERIAL_VERSION_UID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEspecie() {
+        return especie;
     }
 
     public String getApodo() {
@@ -31,41 +52,35 @@ public class Pokemon implements Serializable {
         this.apodo = apodo;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    public int getExp() {
+        return exp;
     }
 
     public int getVidaActual() {
         return vidaActual;
     }
 
-    public void setVidaActual(int vidaActual) {
-        this.vidaActual = vidaActual;
-    }
-
     public int getVidaMax() {
         return vidaMax;
     }
 
-    public void setVidaMax(int vidaMax) {
-        this.vidaMax = vidaMax;
+    public int getPuntosAtaque() {
+        return puntosAtaque;
     }
-    
-    
+
+    public int getPuntosDefensa() {
+        return puntosDefensa;
+    }
+
+    public int getPuntosVelocidad() {
+        return puntosVelocidad;
+    }
+
+    public Movimiento[] getMovimientos() {
+        return movimientos;
+    }
 }
