@@ -1,7 +1,11 @@
 package usac.cunoc.ipc1.poketerminal;
 
 import java.util.Scanner;
-import usac.cunoc.ipc1.poketerminal.mapas.MapaCiudad;
+import usac.cunoc.ipc1.poketerminal.catalogos.CatalogoPokemones;
+import usac.cunoc.ipc1.poketerminal.modelos.Jugador;
+import usac.cunoc.ipc1.poketerminal.modelos.Partida;
+import usac.cunoc.ipc1.poketerminal.modelos.Pokemon;
+import usac.cunoc.ipc1.poketerminal.modelos.Posicion;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 import usac.cunoc.ipc1.poketerminal.ui.AsciiArt;
 import usac.cunoc.ipc1.poketerminal.ui.DialogoNPC;
@@ -16,8 +20,10 @@ public class PoketerminalApp {
     private final AsciiArt asciiArt = new AsciiArt();
     private final PixelArt pixelArt = new PixelArt();
     private final DialogoNPC mostrarDialogo = new DialogoNPC();
+    private final CatalogoPokemones pokedex = new CatalogoPokemones();
 
     private int opcionSeleccionada = 1;
+    private boolean pokemonYaSeleccionado = false;
     private boolean programaActivo = true;
     
     public void iniciar() {
@@ -47,7 +53,7 @@ public class PoketerminalApp {
             
             entrada = leerEntrada.texto("Si quieres confirmar la opción seleccionada: X + ENTER\nSi quieres seleccionar la opción de arriba: W + ENTER\nSi quieres seleccionar la opción de abajo: S + ENTER");
 
-            switch (entrada.toLowerCase()) {
+            switch (entrada.toLowerCase().trim()) {
                 case "w":
                     if (opcionSeleccionada > 1) {
                         opcionSeleccionada = opcionSeleccionada - 1;
@@ -87,6 +93,8 @@ public class PoketerminalApp {
     }
     
     private void iniciarNuevaPartida() {
+        ansi.limpiarPantalla();
+        
         String nombrePartida = pedirNombreDePartida();
         
         mostrarDialogo.profesorOak("Hola :D. Te doy la bienvenida al mejor mundo Pokémon!");
@@ -105,43 +113,86 @@ public class PoketerminalApp {
         leerEntrada.enter();
         mostrarDialogo.profesorOak("Ahora debes eligir tu pokemon inicial.");
         leerEntrada.enter();
-
-        int opcionPokemon = Integer.valueOf(leerEntrada.texto("Elige tu pokémon inicial:\n[1] Bulbasaur\n[2] Squirtle\n[3] Charmander"));
         
-        String pokemonElegido = "";
-        switch (opcionPokemon) {
-            case 1:
-                pokemonElegido = "bulbasaur";
-                break;
-            case 2:
-                pokemonElegido = "squirtle";
-                break;
-            case 3:
-                pokemonElegido = "charmander";
-                break;
-            default:
-                System.out.println("Coloca un número válido :c");
-        }
+        opcionSeleccionada = 1;
         
-        mostrarDialogo.profesorOak("Ala y no de pollo :o. ¡Excelente decisión con " + pokemonElegido + "!");
+        do {
+            ansi.limpiarPantalla();
+            eleccionPokemon();
+        } while (!pokemonYaSeleccionado);
+        
+        Pokemon pokemonInicial = pokedex.crearPokemon(idPokemon(), null, 1);
+        
+        mostrarDialogo.profesorOak("Ala y no de pollo :o. ¡Excelente decisión con " + pokemonInicial.getEspecie() + "!");
         leerEntrada.enter();
         
-        String apodoPokemon = leerEntrada.texto("¿Qué apodo le quieres dar a tu " + pokemonElegido + "? (Presione ENTER si no quieres agregarle apodo");
+        String apodoPokemon = leerEntrada.texto("¿Qué apodo le quieres dar a tu " + pokemonInicial.getEspecie()+ "? (Presione ENTER si no quieres agregarle apodo");
         
-        if (apodoPokemon.isEmpty()) {
-            apodoPokemon = pokemonElegido;
+        if (!apodoPokemon.trim().isEmpty()) {
+            pokemonInicial.setApodo(apodoPokemon);
         }
         
-        mostrarDialogo.profesorOak("Nítido entonces :D. " + apodoPokemon + " se une a tu aventura");
+        mostrarDialogo.profesorOak("Nítido :D. " + pokemonInicial.getApodo() + " se une a tu aventura");
+        leerEntrada.enter();
+        
+        Posicion posicion = new Posicion(2, 2);
+        Jugador jugador = new Jugador(nombreJugador, posicion, pokemonInicial);
+        System.out.println("Se supone que todo bien :p");
+        scanner.nextLine();
+        
+        ansi.limpiarPantalla();
+        Partida partidaActual = new Partida(nombrePartida, jugador);
+        
+        mostrarDialogo.profesorOak("¡Nítido " + nombreJugador + "! Ahora te entrego a tu pokemon y suerte :D");
         leerEntrada.enter();
         
         ansi.limpiarPantalla();
-        MapaCiudad mapaCiudad = new MapaCiudad();
-        mapaCiudad.imprimirMapa();
+        partidaActual.getCiudadActual().imprimirMapa();
+    }
+    
+    private void eleccionPokemon() {        
+        System.out.println(asciiArt.getELEGIR_POKEMON());
+        System.out.println(pixelArt.getPOKEMONES_DE_ELECCION());
+        System.out.println(asciiArt.getNOMBRES_POKEMONES());
+        
+        System.out.println(pixelArt.getSELECCIONAR_CUADRO(opcionSeleccionada));
+        
+        String entrada = leerEntrada.texto("Si quieres confirmar la opción seleccionada: X + ENTER\nSi quieres seleccionar la opción de la derecha: D + ENTER\nSi quieres seleccionar la opción de la izquierda: A + ENTER");
+        
+        switch (entrada.toLowerCase().trim()) {
+            case "a":
+                if (opcionSeleccionada > 1) {
+                    opcionSeleccionada = opcionSeleccionada - 1;
+                }
+                break;
+            case "d":
+                if (opcionSeleccionada < 3) {
+                    opcionSeleccionada = opcionSeleccionada + 1;
+                }
+                break;
+            case "x":
+                pokemonYaSeleccionado = true;
+                return;
+            default:
+                System.out.println("Entrada inválida. Presiona ENTER para volver a intentar");
+                scanner.nextLine();        
+        }
+    }
+    
+    private int idPokemon() {
+        switch (opcionSeleccionada) {
+            case 1:
+                return 1;
+            case 2:
+                return 7;
+            case 3:
+                return 4;
+        }
+        return 1;
     }
     
     private String pedirNombreDePartida() {
-        asciiArt.getINGRESAR_NOMBRE_PARTIDA();
+        System.out.println(asciiArt.getINGRESAR_NOMBRE_PARTIDA());
         return leerEntrada.texto("Escriba un nombre para identificar tu partida :p");
     }
 }
