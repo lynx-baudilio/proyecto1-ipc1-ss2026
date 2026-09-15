@@ -126,6 +126,7 @@ public class PoketerminalApp {
         
         opcionSeleccionada = 1;
         
+        pokemonYaSeleccionado = false;
         do {
             ansi.limpiarPantalla();
             eleccionPokemon();
