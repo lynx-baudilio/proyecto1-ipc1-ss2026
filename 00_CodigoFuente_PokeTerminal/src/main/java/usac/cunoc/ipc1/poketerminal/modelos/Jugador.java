@@ -8,6 +8,7 @@ public class Jugador implements Serializable {
     
     private static final int POKEMONES_MAX = 6;
     private String nombreJugador;
+    private String simbolo = "±";
     private int pokemonesActuales;
     private Posicion posicion;
     private Pokemon[] equipoPokemon;
@@ -33,6 +34,10 @@ public class Jugador implements Serializable {
     
     public String getNombreJugador() {
         return nombreJugador;
+    }
+
+    public String getSimbolo() {
+        return simbolo;
     }
 
     public int getPokemonesActuales() {
