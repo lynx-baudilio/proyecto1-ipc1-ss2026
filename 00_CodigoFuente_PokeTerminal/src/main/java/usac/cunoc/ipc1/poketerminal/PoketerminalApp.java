@@ -159,45 +159,53 @@ public class PoketerminalApp {
     private void explorarMapa(Partida partidaActual) {
         boolean explorando = true;
         GestorDeArchivos gestor = new GestorDeArchivos();
+        Jugador jugador = partidaActual.getJugador();
 
         do {
             ansi.limpiarPantalla();
 
-            System.out.println(Ansi.AMARILLO + "Entrenador: " + partidaActual.getJugador().getNombreJugador()
+            System.out.println(Ansi.AMARILLO + "Entrenador: " + jugador.getNombreJugador()
                     + " | Ciudad: " + partidaActual.getCiudadActual().getNombreCiudad() + Ansi.RESET);
 
-            partidaActual.getCiudadActual().imprimirMapa();
+            partidaActual.getCiudadActual().imprimirMapa(jugador);
 
             String entrada = leerEntrada.texto(
-                    "Controles: [W/A/S/D] Moverte | [G] Guardar Partida | [X] Salir al Menú Principal"
+                    "Controles: [W/A/S/D] Moverte | [G] Guardar Partida | [X] Salir"
             ).toLowerCase().trim();
+
+            Posicion posicion = jugador.getPosicion();
+            int nuevaFila = posicion.getFila();
+            int nuevaColumna = posicion.getColumna();
 
             switch (entrada) {
                 case "w":
-                    // Lógica para subir fila en la Posicion del jugador
+                    nuevaFila = nuevaFila - 1;
                     break;
                 case "s":
-                    // Lógica para bajar fila
+                    nuevaFila = nuevaFila + 1;
                     break;
                 case "a":
-                    // Lógica para mover columna a la izquierda
+                    nuevaColumna = nuevaColumna - 1;
                     break;
                 case "d":
-                    // Lógica para mover columna a la derecha
+                    nuevaColumna = nuevaColumna + 1;
                     break;
                 case "g":
-                    // Guardar la partida inmediatamente en archivo .dat
                     if (gestor.guardarPartida(partidaActual)) {
                         System.out.println(Ansi.VERDE + "¡Partida guardada exitosamente!" + Ansi.RESET);
                     }
                     leerEntrada.enter();
-                    break;
+                    continue;
                 case "x":
                     explorando = false;
-                    break;
+                    continue;
                 default:
-                    System.out.println("Tecla no válida.");
-                    break;
+                    continue;
+            }
+
+            if (partidaActual.getCiudadActual().esCasillaPasable(nuevaFila, nuevaColumna)) {
+                posicion.setFila(nuevaFila);
+                posicion.setColumna(nuevaColumna);
             }
 
         } while (explorando);
