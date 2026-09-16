@@ -5,6 +5,12 @@ import usac.cunoc.ipc1.poketerminal.modelos.Posicion;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
 public abstract class Mapa {
+    protected final int[][] ZONAS_VALIDAS = {
+        {2, 3},
+        {2, 36},
+        {10, 3},
+        {10, 36}
+    };
     
     protected String[][] cuadricula;
     protected int filas;

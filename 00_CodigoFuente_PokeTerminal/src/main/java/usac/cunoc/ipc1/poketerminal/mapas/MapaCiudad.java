@@ -11,7 +11,7 @@ public class MapaCiudad extends Mapa{
     private Random random = new Random();
     
     public MapaCiudad(String nombreCiudad) {
-        super(26, 100);
+        super(20, 70);
         this.nombreCiudad = nombreCiudad;
         colocarEdificiosAleatorios();
     }
