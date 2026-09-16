@@ -7,9 +7,7 @@ import usac.cunoc.ipc1.poketerminal.mapas.edificios.GimnasioPokemon;
 import usac.cunoc.ipc1.poketerminal.mapas.edificios.TiendaPokemon;
 
 public class MapaCiudad extends Mapa{
-    
     private String nombreCiudad;
-    
     private Random random = new Random();
     
     public MapaCiudad(String nombreCiudad) {
@@ -19,46 +17,30 @@ public class MapaCiudad extends Mapa{
     }
 
     private void colocarEdificiosAleatorios() {
-        
         Edificio[] listaEdificios = new Edificio[] {
             new CentroPokemon(),
             new GimnasioPokemon(),
             new TiendaPokemon()
         };
         
+        boolean[] zonaOcupada = new boolean[ZONAS_VALIDAS.length];
+        
         for (int i = 0; i < listaEdificios.length; i++) {
-            Edificio edificio = listaEdificios[i];
-            boolean colocado = false;
+            int indiceZona;
             
-            while (!colocado) {                
-                int filaRandom = random.nextInt(filas);
-                int columnaRandom = random.nextInt(columnas);
-                
-                if (puedeColocarEdificio(filaRandom, columnaRandom, edificio.getAlto(), edificio.getAncho())) {
-                    edificio.estamparEdificioEnMapa(filaRandom, columnaRandom, cuadricula);
-                    colocado = true;
-                }
-            }   
+            do {                
+                indiceZona = random.nextInt(ZONAS_VALIDAS.length);
+            } while (zonaOcupada[indiceZona]);
+            
+            zonaOcupada[indiceZona] = true;
+            
+            int fila = ZONAS_VALIDAS[indiceZona][0];
+            int columna = ZONAS_VALIDAS[indiceZona][1];
+            
+            listaEdificios[i].estamparEdificioEnMapa(fila, columna, cuadricula);
         }
     }
     
-    private boolean puedeColocarEdificio(int f, int c, int alto, int ancho) {
-        
-        if (f - 1 < 1 || f + alto + 1 >= filas - 1 || c - 1 < 1 || c + ancho + 1 >= columnas - 1) {
-            return false;
-        }
-        
-        for (int i = (f - 1); i <= (f + alto); i++) {
-            for (int j = (c - 1); j <= (c + ancho); j++) {
-                if (!cuadricula[i][j].contains("·")) {
-                    return false;
-                }
-            }
-        }
-        
-        return true;
-    }
-
     public String getNombreCiudad() {
         return nombreCiudad;
     }
