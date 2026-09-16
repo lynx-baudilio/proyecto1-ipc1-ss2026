@@ -1,5 +1,7 @@
 package usac.cunoc.ipc1.poketerminal.mapas;
 
+import usac.cunoc.ipc1.poketerminal.modelos.Jugador;
+import usac.cunoc.ipc1.poketerminal.modelos.Posicion;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
 public abstract class Mapa {
@@ -17,11 +19,16 @@ public abstract class Mapa {
         generarEsqueleto();
     }
     
-    public void imprimirMapa() {
-        System.out.println("Mapa de prueba xd");
+    public void imprimirMapa(Jugador jugador) {
+        Posicion posicion = jugador.getPosicion();
+
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                System.out.print(cuadricula[i][j]);
+                if (i == posicion.getFila() && j == posicion.getColumna()) {
+                    System.out.print(jugador.getSimbolo());
+                } else {
+                    System.out.print(cuadricula[i][j]);
+                }
             }
             System.out.println();
         }
@@ -49,5 +56,13 @@ public abstract class Mapa {
                 }
             }
         }
-    }   
+    }
+    
+    public boolean esCasillaPasable(int f, int c) {
+        if (f < 1 || f >= filas - 1 || c < 1 || c >= columnas - 1) {
+            return false;
+        }
+        String casilla = cuadricula[f][c];
+        return casilla.contains("·") || casilla.contains("¥") || casilla.contains("Ω");
+    }
 }
