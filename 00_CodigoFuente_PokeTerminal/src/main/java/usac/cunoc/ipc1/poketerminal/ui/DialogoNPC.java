@@ -14,5 +14,4 @@ public class DialogoNPC {
         System.out.println(Ansi.NEGRITA + Ansi.MORADO + " " + mensaje + Ansi.RESET);
         System.out.println(asciiArt.getBORDE_INFERIOR());
     }
-    
 }

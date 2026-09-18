@@ -88,7 +88,88 @@ public class AsciiArt {
             + "           " + Ansi.VERDE + "╠╩╗║ ║║  ╠╩╗╠═╣╚═╗╠═╣║ ║╠╦╝                    " + Ansi.AZUL + "╚═╗║═╬╗║ ║║╠╦╝ ║ ║  ║╣             " + Ansi.ROJO + "║  ╠═╣╠═╣╠╦╝║║║╠═╣║║║ ║║║╣ ╠╦╝\n"
             + "           " + Ansi.VERDE + "╚═╝╚═╝╩═╝╚═╝╩ ╩╚═╝╩ ╩╚═╝╩╚═                    " + Ansi.AZUL + "╚═╝╚═╝╚╚═╝╩╩╚═ ╩ ╩═╝╚═╝            " + Ansi.ROJO + "╚═╝╩ ╩╩ ╩╩╚═╩ ╩╩ ╩╝╚╝═╩╝╚═╝╩╚═"
             + Ansi.RESET;
+    
+    private final String MAPA_AEREO = Ansi.NEGRITA
+            + "                       ███╗   ███╗ █████╗ ██████╗  █████╗      █████╗ ███████╗██████╗ ███████╗ ██████╗ \n"
+            + "                       ████╗ ████║██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔════╝██╔══██╗██╔════╝██╔═══██╗\n"
+            + "                       ██╔████╔██║███████║██████╔╝███████║    ███████║█████╗  ██████╔╝█████╗  ██║   ██║\n"
+            + "                       ██║╚██╔╝██║██╔══██║██╔═══╝ ██╔══██║    ██╔══██║██╔══╝  ██╔══██╗██╔══╝  ██║   ██║\n"
+            + "                       ██║ ╚═╝ ██║██║  ██║██║     ██║  ██║    ██║  ██║███████╗██║  ██║███████╗╚██████╔╝\n"
+            + "                       ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ " +
+            Ansi.RESET;
+    
+    private final String CIUDAD_PUEBLO_PALETA = Ansi.NEGRITA + 
+            "                               ░█▀░░░░░░▀█░░░░█▀█░█░█░█▀▀░█▀▄░█░░░█▀█░░░█▀█░█▀█░█░░░█▀▀░▀█▀░█▀█\n" +
+            "                               ░█░░░░░░░░█░░░░█▀▀░█░█░█▀▀░█▀▄░█░░░█░█░░░█▀▀░█▀█░█░░░█▀▀░░█░░█▀█\n" +
+            "                               ░▀▀░░░░░░▀▀░░░░▀░░░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░░▀░░▀░▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_PUEBLO_PALETA_SELECCIONADO = Ansi.NEGRITA + 
+            "                               ░█▀░░▀▄░░▀█░░░░█▀█░█░█░█▀▀░█▀▄░█░░░█▀█░░░█▀█░█▀█░█░░░█▀▀░▀█▀░█▀█\n" +
+            "                               ░█░░░░▄▀░░█░░░░█▀▀░█░█░█▀▀░█▀▄░█░░░█░█░░░█▀▀░█▀█░█░░░█▀▀░░█░░█▀█\n" +
+            "                               ░▀▀░░▀░░░▀▀░░░░▀░░░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░░░▀░░░▀░▀░▀▀▀░▀▀▀░░▀░░▀░▀\n" +
+            Ansi.RESET;
+    
+    private final String CIUDAD_VERDE = Ansi.NEGRITA + 
+            "                                 ░█▀░░░░░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█░█░█▀▀░█▀▄░█▀▄░█▀▀\n" +
+            "                                 ░█░░░░░░░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░▀▄▀░█▀▀░█▀▄░█░█░█▀▀\n" +
+            "                                 ░▀▀░░░░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░░▀░░▀▀▀░▀░▀░▀▀░░▀▀▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_VERDE_SELECCIONADO = Ansi.NEGRITA + 
+            "                                 ░█▀░░▀▄░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█░█░█▀▀░█▀▄░█▀▄░█▀▀\n" +
+            "                                 ░█░░░░▄▀░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░▀▄▀░█▀▀░█▀▄░█░█░█▀▀\n" +
+            "                                 ░▀▀░░▀░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░░▀░░▀▀▀░▀░▀░▀▀░░▀▀▀\n" +
+            Ansi.RESET;
+  
+    private final String CIUDAD_PLATEADA = Ansi.NEGRITA + 
+            "                           ░█▀░░░░░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀█░█░░░█▀█░▀█▀░█▀▀░█▀█░█▀▄░█▀█\n" +
+            "                           ░█░░░░░░░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█▀▀░█░░░█▀█░░█░░█▀▀░█▀█░█░█░█▀█\n" +
+            "                           ░▀▀░░░░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀░▀░▀▀░░▀░▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_PLATEADA_SELECCIONADO = Ansi.NEGRITA + 
+            "                           ░█▀░░▀▄░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀█░█░░░█▀█░▀█▀░█▀▀░█▀█░█▀▄░█▀█\n" +
+            "                           ░█░░░░▄▀░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█▀▀░█░░░█▀█░░█░░█▀▀░█▀█░█░█░█▀█\n" +
+            "                           ░▀▀░░▀░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀░▀░▀░▀▀░░▀░▀\n" +
+            Ansi.RESET;
+    
+    private final String CIUDAD_CERULEA = Ansi.NEGRITA + 
+            "                             ░█▀░░░░░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀▀░█▀▀░█▀▄░█░█░█░░░█▀▀░█▀█\n" +
+            "                             ░█░░░░░░░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█░░░█▀▀░█▀▄░█░█░█░░░█▀▀░█▀█\n" +
+            "                             ░▀▀░░░░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_CERULEA_SELECCIONADO = Ansi.NEGRITA + 
+            "                             ░█▀░░▀▄░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀▀░█▀▀░█▀▄░█░█░█░░░█▀▀░█▀█\n" +
+            "                             ░█░░░░▄▀░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█░░░█▀▀░█▀▄░█░█░█░░░█▀▀░█▀█\n" +
+            "                             ░▀▀░░▀░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀\n" +
+            Ansi.RESET;
+    
+    private final String CIUDAD_CARMIN = Ansi.NEGRITA + 
+            "                               ░█▀░░░░░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀▀░█▀█░█▀▄░█▄█░▀█▀░█▀█\n" +
+            "                               ░█░░░░░░░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█░░░█▀█░█▀▄░█░█░░█░░█░█\n" +
+            "                               ░▀▀░░░░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀▀▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_CARMIN_SELECCIONADO = Ansi.NEGRITA + 
+            "                               ░█▀░░▀▄░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀▀░█▀█░█▀▄░█▄█░▀█▀░█▀█\n" +
+            "                               ░█░░░░▄▀░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█░░░█▀█░█▀▄░█░█░░█░░█░█\n" +
+            "                               ░▀▀░░▀░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀▀▀░▀░▀░▀░▀░▀░▀░▀▀▀░▀░▀\n" +
+            Ansi.RESET;
 
+    private final String CIUDAD_AZULONA = Ansi.NEGRITA + 
+            "                             ░█▀░░░░░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀█░▀▀█░█░█░█░░░█▀█░█▀█░█▀█\n" +
+            "                             ░█░░░░░░░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█▀█░▄▀░░█░█░█░░░█░█░█░█░█▀█\n" +
+            "                             ░▀▀░░░░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░▀\n" +
+            Ansi.RESET;
+ 
+    private final String CIUDAD_AZULONA_SELECCIONADO = Ansi.NEGRITA + 
+            "                             ░█▀░░▀▄░░▀█░░░░█▀▀░▀█▀░█░█░█▀▄░█▀█░█▀▄░░░█▀█░▀▀█░█░█░█░░░█▀█░█▀█░█▀█\n" +
+            "                             ░█░░░░▄▀░░█░░░░█░░░░█░░█░█░█░█░█▀█░█░█░░░█▀█░▄▀░░█░█░█░░░█░█░█░█░█▀█\n" +
+            "                             ░▀▀░░▀░░░▀▀░░░░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀░▀░▀▀░░░░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░▀\n" +
+            Ansi.RESET;
+    
     public String getBORDE_SUPERIOR() {
         return BORDE_SUPERIOR;
     }
@@ -136,5 +217,51 @@ public class AsciiArt {
 
     public String getNOMBRES_POKEMONES() {
         return NOMBRES_POKEMONES;
+    }
+    
+    public String getMAPA_AEREO() {
+        return MAPA_AEREO;
+    }
+    
+    public String getCIUDAD_PUEBLO_PALETA(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_PUEBLO_PALETA_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_PUEBLO_PALETA + Ansi.RESET;
+    } 
+    
+    public String getCIUDAD_VERDE(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_VERDE_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_VERDE + Ansi.RESET;
+    } 
+    
+    public String getCIUDAD_PLATEADA(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_PLATEADA_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_PLATEADA + Ansi.RESET;
+    } 
+    
+    public String getCIUDAD_CERULEA(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_CERULEA_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_CERULEA + Ansi.RESET;
+    }
+    
+    public String getCIUDAD_CARMIN(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_CARMIN_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_CARMIN + Ansi.RESET;
+    }
+    
+    public String getCIUDAD_AZULONA(boolean seleccionado) {
+        if (seleccionado) {
+            return Ansi.VERDE + CIUDAD_AZULONA_SELECCIONADO + Ansi.RESET;
+        }
+        return Ansi.GRIS + CIUDAD_AZULONA + Ansi.RESET;
     }
 }

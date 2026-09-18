@@ -1,9 +1,12 @@
 package usac.cunoc.ipc1.poketerminal.mapas.edificios;
 
+import usac.cunoc.ipc1.poketerminal.modelos.Partida;
 import usac.cunoc.ipc1.poketerminal.ui.PixelArt;
+import usac.cunoc.ipc1.poketerminal.utilidades.GestorDeArchivos;
+import usac.cunoc.ipc1.poketerminal.utilidades.LeerEntrada;
 
 public abstract class Edificio {
-    
+        
     protected int fila;
     protected int columna;
     protected int alto;
@@ -20,6 +23,7 @@ public abstract class Edificio {
     }
     
     protected abstract String[][] construirPixelArt();
+    public abstract void abrir(Partida partida);
     
     public void estamparEdificioEnMapa(int fila, int columna, String[][] cuadricula) {
         this.fila = fila;
@@ -38,6 +42,5 @@ public abstract class Edificio {
 
     public int getAncho() {
         return ancho;
-    }
-    
+    }   
 }

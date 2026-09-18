@@ -29,5 +29,4 @@ public class LeerEntrada {
     private String flecha() {
         return Ansi.NEGRITA + Ansi.CYAN + "»";
     }
-    
 }

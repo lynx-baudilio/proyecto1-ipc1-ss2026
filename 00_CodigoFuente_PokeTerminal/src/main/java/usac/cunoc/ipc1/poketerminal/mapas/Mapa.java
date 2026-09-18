@@ -1,17 +1,8 @@
 package usac.cunoc.ipc1.poketerminal.mapas;
 
-import usac.cunoc.ipc1.poketerminal.modelos.Jugador;
-import usac.cunoc.ipc1.poketerminal.modelos.Posicion;
 import usac.cunoc.ipc1.poketerminal.ui.Ansi;
 
-public abstract class Mapa {
-    protected final int[][] ZONAS_VALIDAS = {
-        {2, 3},
-        {2, 36},
-        {10, 3},
-        {10, 36}
-    };
-    
+public abstract class Mapa {    
     protected String[][] cuadricula;
     protected int filas;
     protected int columnas;
@@ -25,21 +16,6 @@ public abstract class Mapa {
         generarEsqueleto();
     }
     
-    public void imprimirMapa(Jugador jugador) {
-        Posicion posicion = jugador.getPosicion();
-
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                if (i == posicion.getFila() && j == posicion.getColumna()) {
-                    System.out.print(jugador.getSimbolo());
-                } else {
-                    System.out.print(cuadricula[i][j]);
-                }
-            }
-            System.out.println();
-        }
-    }
-
     private void generarEsqueleto() {
 
         for (int i = 0; i < filas; i++) {
@@ -58,7 +34,7 @@ public abstract class Mapa {
                 } else if (i == (filas - 1) && j == (columnas - 1)) {
                     cuadricula[filas - 1][columnas - 1] = "╝";
                 } else {
-                    cuadricula[i][j] = Ansi.GRIS + "·" + Ansi.RESET;
+                    cuadricula[i][j] = Ansi.NEGRO + "·" + Ansi.RESET;
                 }
             }
         }
@@ -70,5 +46,17 @@ public abstract class Mapa {
         }
         String casilla = cuadricula[f][c];
         return casilla.contains("·") || casilla.contains("¥") || casilla.contains("Ω");
+    }
+
+    public String[][] getCuadricula() {
+        return cuadricula;
+    }
+
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
     }
 }

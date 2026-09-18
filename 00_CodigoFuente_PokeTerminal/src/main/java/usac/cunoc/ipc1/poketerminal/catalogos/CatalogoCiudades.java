@@ -14,8 +14,8 @@ public class CatalogoCiudades {
         boolean[] usados = new boolean[NOMBRES.length];
         Random random = new Random();
         
+        int indiceAleatorio;
         int contador = 0;
-        int indiceAleatorio = 0;
         
         while (contador < 3) {            
             indiceAleatorio = random.nextInt(NOMBRES.length);
@@ -26,8 +26,8 @@ public class CatalogoCiudades {
             }
         }
         return seleccionados;
-    }
-
+    }    
+    
     public static String[] getNOMBRES() {
         return NOMBRES;
     }

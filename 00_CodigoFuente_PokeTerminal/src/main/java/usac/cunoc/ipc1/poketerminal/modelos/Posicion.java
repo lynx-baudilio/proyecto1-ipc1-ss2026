@@ -3,10 +3,12 @@ package usac.cunoc.ipc1.poketerminal.modelos;
 import java.io.Serializable;
 
 public class Posicion implements Serializable {
-    
+
+    private static final long serialVersionUID = 1L;
+
     private int fila;
     private int columna;
-    
+
     public Posicion(int fila, int columna) {
         this.fila = fila;
         this.columna = columna;
@@ -26,5 +28,9 @@ public class Posicion implements Serializable {
 
     public void setColumna(int columna) {
         this.columna = columna;
+    }
+
+    public Posicion copiar() {
+        return new Posicion(fila, columna);
     }
 }
